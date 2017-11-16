@@ -21,13 +21,13 @@ public class HconsumerImpl {
 
     public String sayHei(String name){
         RestTemplate restTemplate = RestTemplateBuilder.create();
-        String microserviceName = "provider";
+        String microserviceName = "hprovider";
         String prefix = "cse://" + microserviceName;
         HttpHeaders headers = new HttpHeaders();
         headers.add("name", name);
         @SuppressWarnings("rawtypes")
         HttpEntity entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(prefix + "/provider/sayhei",
+        ResponseEntity<String> response = restTemplate.exchange(prefix + "/hprovider/sayhei",
                 HttpMethod.GET,
                 entity,
                 String.class);
