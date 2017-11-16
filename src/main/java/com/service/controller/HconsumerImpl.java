@@ -1,9 +1,10 @@
 package com.service.controller;
 
 import com.service.model.Person;
-
-import javax.ws.rs.core.MediaType;
-
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import io.servicecomb.core.CseContext;
 import io.servicecomb.provider.springmvc.reference.RestTemplateBuilder;
