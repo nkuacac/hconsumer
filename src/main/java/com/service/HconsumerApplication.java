@@ -2,7 +2,7 @@ package com.service;
 
 import io.servicecomb.foundation.common.utils.BeanUtils;
 import io.servicecomb.foundation.common.utils.Log4jUtils;
-
+import com.service.controller.HConsummerImpl;
 /**
  * <一句话功能简述>
  * <功能详细描述>
@@ -16,5 +16,11 @@ public class HconsumerApplication {
     public static void main(String[] args) throws Exception {
         Log4jUtils.init();
         BeanUtils.init();
+        HConsummerImpl consummer = new HConsummerImpl();
+        for(;;) {
+            Integer s = consummer.add(1,2);
+            System.out.println(s);
+            Thread.sleep(2000);
+        }
     }
 }
