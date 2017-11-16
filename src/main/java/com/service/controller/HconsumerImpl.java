@@ -21,10 +21,17 @@ public class HconsumerImpl {
 
     public String sayHei(String name){
         RestTemplate restTemplate = RestTemplateBuilder.create();
-        String microserviceName = "hprovider";
+        String microserviceName = "provider";
         String prefix = "cse://" + microserviceName;
-        CseContext.getInstance().getConsumerProviderManager().setTransport(microserviceName, "rest");
-        return restTemplate.getForObject(prefix + "/hprovider/sayhei?name={name}", String.class, name);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("name", name);
+        @SuppressWarnings("rawtypes")
+        HttpEntity entity = new HttpEntity<>(null, headers);
+        ResponseEntity<String> response = restTemplate.exchange(prefix + "/provider/sayhei",
+                HttpMethod.GET,
+                entity,
+                String.class);
+        return response.getBody();
     }
 
     public String sayHello(String name){
