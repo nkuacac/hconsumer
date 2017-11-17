@@ -7,16 +7,16 @@ service_description:
 cse:
   service:
     registry:
-      address: https://100.125.1.10:443
+      address: https://100.125.0.198:30100
       instance:
         watch: false
   config:
     client:
-      serverUri: https://100.125.1.10:443
+      serverUri: https://100.125.0.198:30103
       refreshMode: 1
       refresh_interval: 5000
   monitor:
     client:
-      serverUri: https://100.125.1.10:443
+      serverUri: https://100.125.0.198:30109
   rest:
     address: 0.0.0.0:8080
