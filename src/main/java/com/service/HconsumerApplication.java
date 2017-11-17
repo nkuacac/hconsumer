@@ -23,7 +23,7 @@ public class HconsumerApplication {
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }
-            Thread.sleep(2000);
+            Thread.sleep(500);
         }
     }
 }
