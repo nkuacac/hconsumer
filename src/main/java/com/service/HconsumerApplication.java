@@ -15,15 +15,5 @@ public class HconsumerApplication {
     public static void main(String[] args) throws Exception {
         Log4jUtils.init();
         BeanUtils.init();
-        HconsumerImpl consummer = new HconsumerImpl();
-        for(;;) {
-            try {
-                Integer s = consummer.add(1,2);
-                System.out.println(s);
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-            }
-            Thread.sleep(500);
-        }
     }
 }
