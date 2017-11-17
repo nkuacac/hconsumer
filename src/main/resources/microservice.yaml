@@ -23,3 +23,12 @@ cse:
   references:
     hprovider:
       version-rule: 0.0.0+
+  loadbalance:
+    serverListFilters: darklaunch
+    serverListFilter:
+      darklaunch:
+        className: com.huawei.paas.darklaunch.DarklaunchServerListFilter
+  handler:
+    chain:
+      Consumer:
+        default: loadbalance,bizkeeper-consumer,perf-stats
