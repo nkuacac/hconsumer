@@ -1,5 +1,11 @@
 package com.service.controller;
-
+import io.servicecomb.provider.rest.common.RestSchema;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import io.servicecomb.core.CseContext;
+import javax.ws.rs.core.MediaType;
 import com.service.model.Person;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -10,9 +16,14 @@ import io.servicecomb.core.CseContext;
 import io.servicecomb.provider.springmvc.reference.RestTemplateBuilder;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.CseSpringCodegen", date = "2017-11-16T07:36:16.488Z")
-
+@RestSchema(schemaId = "hconsumer")
+@RequestMapping(path = "/hconsumer", produces = MediaType.APPLICATION_JSON)
 public class HconsumerImpl {
-    public Integer add(Integer a, Integer b){
+    
+    @RequestMapping(value = "/add",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    public Integer add(@RequestParam(value = "a", required = true) Integer a, @RequestParam(value = "b", required = true) Integer b){
         RestTemplate restTemplate = RestTemplateBuilder.create();
         String microserviceName = "hprovider";
         String prefix = "cse://" + microserviceName;
