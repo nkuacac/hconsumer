@@ -17,8 +17,12 @@ public class HconsumerApplication {
         BeanUtils.init();
         HconsumerImpl consummer = new HconsumerImpl();
         for(;;) {
-            Integer s = consummer.add(1,2);
-            System.out.println(s);
+            try {
+                Integer s = consummer.add(1,2);
+                System.out.println(s);
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
             Thread.sleep(2000);
         }
     }
